@@ -11,7 +11,7 @@ setup(
     url = "https://github.com/alice1017/icalwage",
 	description = "This is the script to calculate the wage from ics file that write out from iCal",
     long_description = open("README.rst").read(),
-    install_requires = ["icalendar", "miniparser"],
+    requires = ["icalendar", "miniparser"],
 	scripts = ['icalwage.py']
 )
 

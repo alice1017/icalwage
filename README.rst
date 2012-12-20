@@ -44,6 +44,8 @@ How to use
     :hourly_wage: 時給単価
     icsファイルに含まれているイベントを解析して予想給料を出力します。
 
+.. image:: https://raw.github.com/alice1017/icalwage/master/ss.png
+
 -c --csv [ics_file_path], [csv_file_name]
     icsファイルに含まれているイベントを解析してcsvファイルに出力します。
 

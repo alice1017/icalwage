@@ -33,18 +33,14 @@ How to use
 ############
 
 -s, --show-event [ics_file_path]
-
     icsファイルに含まれているイベントを出力します。
     出力形式は `2012/11/19 : 08:30:00 ~ 17:00:00 : 8時間 30分` このような形式です。
 
 -w --work-wage [ics_file_path], [hourly_wage]
-
     :hourly_wage: 時給単価
-
     icsファイルに含まれているイベントを解析して予想給料を出力します。
 
 -c --csv [ics_file_path], [csv_file_name]
-    
     icsファイルに含まれているイベントを解析してcsvファイルに出力します。
 
     

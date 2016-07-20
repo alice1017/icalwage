@@ -77,21 +77,31 @@ def make_csv(ics_file, filename):
     io = StringIO()
     sys.stdout = io
 
+    put = sys.stdout.write
+
     for event in get_events(ical):
 
         # about time
         start = event.get("dtstart").dt
         end = event.get("dtend").dt
-        print start.strftime(date_format), ",",
-        print start.strftime(time_format), ",~,", end.strftime(time_format), ",",
+        put(start.strftime(date_format) + ",")
+        put(start.strftime(time_format) + ",~," + end.strftime(time_format) + ",")
 
         # about time diff
         delta = relativedelta(end, start)
-        print u"%d時間" % delta.hours,
-        print (u"%d分" if len(str(delta.minutes)) == 2 else u"0%d分") % delta.minutes
+        put(u"%d時間" % delta.hours)
+        put( (u"%d分," if len(str(delta.minutes)) == 2 else u"0%d分,") % delta.minutes )
+
+        # time numberling
+        float_min = float(delta.minutes) / 60
+        time_num = round(float(delta.hours) + float_min,2)
+        put("%g," % time_num)
+
+        # minus 0.5
+        put("%g\n" % (round(time_num - 0.5,2)))
 
     sys.stdout = sys.__stdout__
-    fp.write(io.getvalue().encode("shift_jis"))
+    fp.write(io.getvalue().encode("SHIFT_JIS"))
     fp.close()
 
 def get_events(calendar):

@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser(
     prog="icalwage.py",
-    description="Load a ics file and return csv file")
+    description="Load calender data from an .ics file, and Output .csv file.")
 
 # POSITIONALS
 parser.add_argument(

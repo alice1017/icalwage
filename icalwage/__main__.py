@@ -40,14 +40,14 @@ def main(argv=sys.argv):
 
     args = parser.parse_args()
 
-    # try:
-    status = program(args)
-    sys.exit(status)
+    try:
+        status = program(args)
+        sys.exit(status)
 
-    # except Exception as e:
-    #     error_type = type(e).__name__
-    #     sys.stderr.write("{0}: {1}\n".format(error_type, e.message))
-    #     sys.exit(1)
+    except Exception as e:
+        error_type = type(e).__name__
+        sys.stderr.write("{0}: {1}\n".format(error_type, e.message))
+        sys.exit(1)
 
 
 if __name__ == "__main__":

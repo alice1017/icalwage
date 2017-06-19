@@ -4,12 +4,31 @@
 import sys
 
 from .cli import parser
-from .utils import check_destfile
+from .core import compute_calendar_data
+from .utils import (
+    adjust_args,
+    check_destfile,
+    check_sourcefile
+)
 
 
 def program(args):
 
+    args = adjust_args(args)
+    check_sourcefile(args.source)
     check_destfile(args.dest, overwrite=args.overwrite)
+
+    with open(args.source, "r") as sfp:
+
+        context = sfp.read()
+
+    compute_calendar_data(context, args)
+    # with open(args.dest, "w") as dfp:
+
+    #     csv_data = compute_calendar_data(context, args)
+    #     dfp.write(csv_data)
+
+    return 0
 
 
 def main(argv=sys.argv):
@@ -26,7 +45,7 @@ def main(argv=sys.argv):
 
     except Exception as e:
         error_type = type(e).__name__
-        sys.stderr.write("{0}: {1}".format(error_type, e.message))
+        sys.stderr.write("{0}: {1}\n".format(error_type, e.message))
         sys.exit(1)
 
 

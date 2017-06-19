@@ -22,12 +22,12 @@ def program(args):
 
         context = sfp.read()
 
-    compute_calendar_data(context, args)
-    # with open(args.dest, "w") as dfp:
+    with open(args.dest, "w") as dfp:
 
-    #     csv_data = compute_calendar_data(context, args)
-    #     dfp.write(csv_data)
+        csv_data = compute_calendar_data(context, args)
+        dfp.write(csv_data)
 
+    print "Created {}".format(args.dest)
     return 0
 
 

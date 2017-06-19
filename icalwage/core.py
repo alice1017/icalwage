@@ -11,10 +11,15 @@ TIME_FORMAT = "%H:%M:%S"
 
 def get_calendar_events(calendar):
 
-    for component in calendar.walk():
+    empty_flag = True
 
+    for component in calendar.walk():
         if component.name == "VEVENT":
+            empty_flag = False
             yield component
+
+    if empty_flag is True:
+        raise SystemError("There are not events in this ics file.")
 
 
 def compute_calendar_data(rawdata, args):
@@ -25,6 +30,9 @@ def compute_calendar_data(rawdata, args):
     calendar = Calendar.from_ical(rawdata)
 
     for event in get_calendar_events(calendar):
+
+        if args.
+
 
         print event.get("dtstart").dt
 

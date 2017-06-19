@@ -1,17 +1,31 @@
 #!/usr/bin/env python
-#coding: utf-8
+# coding: utf-8
 
-from distutils.core import setup
+from setuptools import setup, find_packages
+from icalwage import __author__, __version__
 
 setup(
-	name = "icalwage",
-	author = "alice1017",
-	version = "1.0.0",
-    license = "MIT",
-    url = "https://github.com/alice1017/icalwage",
-	description = "This is the script to calculate the wage from ics file that write out from iCal",
-    long_description = open("README.rst").read(),
-    requires = ["icalendar", "miniparser"],
-	scripts = ['icalwage.py']
+    name="icalwage",
+    author=__author__,
+    version=__version__,
+    license="MIT License",
+    url="https://github.com/alice1017/icalwage",
+    description="The icalwage computes the iCal calendar and output csv file.",
+    install_requires=["icalendar", "python-dateutil"],
+    packages=find_packages(),
+    entry_points={
+        "console_scripts": [
+            "icalwage=icalwage.__main__:main"
+        ]
+    },
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Environment :: Console",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Operating System :: MacOS",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX :: Linux",
+        "Programming Language :: Python :: 2"
+    ]
 )
-

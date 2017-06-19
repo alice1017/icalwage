@@ -30,6 +30,14 @@ def _get_datetime(query):
 
 def adjust_args(args):
 
+    if args.year and args.month:
+        raise SystemError(
+            "You can't set '--year' and '--month' argument by together.")
+    if (args.range_from and not args.range_to) or \
+       (not args.range_from and args.range_to):
+        raise SystemError(
+            "Please set '--from' and '--to' argument by together.")
+
     if args.range_from:
 
         args.range_from = _get_datetime(args.range_from)

@@ -4,6 +4,7 @@
 import sys
 
 from .cli import parser
+from .utils import check_destfile
 
 
 def main(argv=sys.argv):
@@ -12,7 +13,8 @@ def main(argv=sys.argv):
         parser.parse_args(["-h"])
         sys.exit(1)
 
-    print parser.parse_args()
+    args = parser.parse_args()
+    check_destfile(args.dest, overwrite=args.overwrite)
 
 
 if __name__ == "__main__":

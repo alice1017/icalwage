@@ -6,6 +6,7 @@ import os
 from pytz import timezone
 from datetime import datetime
 
+
 def _get_datetime(query):
 
     BASIC_ERROR = "Please set full date. ok: '2017.9.1' no: '9.1'"
@@ -18,7 +19,10 @@ def _get_datetime(query):
     year, month, day = fulldate_data
 
     try:
-        return datetime(int(year), int(month), int(day), tzinfo=timezone('Asia/Tokyo'))
+        return datetime(
+            int(year), int(month), int(day),
+            tzinfo=timezone('Asia/Tokyo')
+        )
 
     except:
         raise TypeError("Incorrect date. " + BASIC_ERROR)

@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 
 DATE_FORMAT = "%Y/%m/%d"
 TIME_FORMAT = "%H:%M:%S"
+WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"]
 
 
 def get_calendar_events(calendar):
@@ -54,11 +55,12 @@ def compute_calendar_data(rawdata, args):
 
 def build_csv_data(start_dt, end_dt):
 
-    template = "{date},{start},~,{end},"
+    template = "{date},{weekday},{start},~,{end},"
     template += "{hours}時間{minutes}分,{total},{basetime}\n"
 
     data = {}
     data["date"] = start_dt.strftime(DATE_FORMAT)
+    data["weekday"] = WEEKDAYS[start_dt.weekday()]
     data["start"] = start_dt.strftime(TIME_FORMAT)
     data["end"] = end_dt.strftime(TIME_FORMAT)
 

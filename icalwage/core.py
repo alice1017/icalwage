@@ -18,8 +18,8 @@ def get_calendar_events(calendar):
             empty_flag = False
             yield component
 
-    # if empty_flag is True:
-    #     raise SystemError("There are not events in this ics file.")
+    if empty_flag is True:
+        raise SystemError("There are not events in this ics file.")
 
 
 def compute_calendar_data(rawdata, args):

@@ -4,9 +4,9 @@
 from icalendar import Calendar
 from dateutil.relativedelta import relativedelta
 
-DATE_FORMAT = "%Y/%m/%d"
-TIME_FORMAT = "%H:%M:%S"
-WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"]
+DATE_FORMAT = u"%Y/%m/%d"
+TIME_FORMAT = u"%H:%M:%S"
+WEEKDAYS = [u"月", u"火", u"水", u"木", u"金", u"土", u"日"]
 
 
 def get_calendar_events(calendar):
@@ -55,8 +55,8 @@ def compute_calendar_data(rawdata, args):
 
 def build_csv_data(start_dt, end_dt):
 
-    template = "{date},{weekday},{start},~,{end},"
-    template += "{hours}時間{minutes}分,{total},{basetime}\n"
+    template = u"{date},{weekday},{start},~,{end},"
+    template += u"{hours}時間{minutes}分,{total},{basetime}\n"
 
     data = {}
     data["date"] = start_dt.strftime(DATE_FORMAT)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from StringIO import StringIO
 from icalendar import Calendar
 from dateutil.relativedelta import relativedelta
 
@@ -55,6 +54,22 @@ def compute_calendar_data(rawdata, args):
 
 def build_csv_data(start_dt, end_dt):
 
-    print "date: {}".format(start_dt.strftime(DATE_FORMAT))
+    template = "{date},{start},~,{end},"
+    template += "{hours}時間{minutes}分,{total},{basetime}\n"
 
-    return ""
+    data = {}
+    data["date"] = start_dt.strftime(DATE_FORMAT)
+    data["start"] = start_dt.strftime(TIME_FORMAT)
+    data["end"] = end_dt.strftime(TIME_FORMAT)
+
+    time_delta = relativedelta(end_dt, start_dt)
+    data["hours"] = time_delta.hours
+    data["minutes"] = time_delta.minutes
+
+    decimal_minutes = float(data["minutes"]) / 60
+    decimal_totaltime = round((float(data["hours"]) + decimal_minutes), 2)
+    data["total"] = decimal_totaltime
+
+    data["basetime"] = round((decimal_totaltime - 0.5), 2)
+
+    return template.format(**data)

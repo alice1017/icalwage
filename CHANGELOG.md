@@ -33,19 +33,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [v2.0.0] - 2017-6-19
 
-## Changed
+### Changed
 
 * Divided script file
 * Changed icalwage subject: **to output csv file only**
 * Changed script install approach: to use entry-points
 * Changed argument parser to argparse
 
-## Added
+### Added
 
 * Added **range** arguments: `--month`, `--year`, `--from`, `--to`
 * Wroute the unittest
 
-## Fixed
+### Fixed
 
 * Compliant pep8
 

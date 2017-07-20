@@ -4,7 +4,7 @@
 import os
 
 from pytz import timezone
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def _get_datetime(query):
@@ -45,6 +45,7 @@ def adjust_args(args):
     if args.range_to:
 
         args.range_to = _get_datetime(args.range_to)
+        args.range_to += timedelta(days=1)
 
     if args.year:
 
